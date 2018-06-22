@@ -1,21 +1,17 @@
-# ElixAtmo
+# ElixAtmo [![Build Status](https://travis-ci.org/simoexpo/ElixAtmo.svg?branch=master)](https://travis-ci.org/simoexpo/ElixAtmo) [![Coverage Status](https://coveralls.io/repos/github/simoexpo/ElixAtmo/badge.svg?branch=master)](https://coveralls.io/github/simoexpo/ElixAtmo?branch=master)
+
+## What is it?
+
+ElixAtmo is client for the NetAtmo API written in elixir.
 
 **TODO: Add description**
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `elixatmo` to your list of dependencies in `mix.exs`:
-
 ```elixir
 def deps do
   [
-    {:elixatmo, "~> 0.1.0"}
+    {:elixatmo, git: "git://github.com/simoexpo/ElixAtmo.git"}
   ]
 end
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/elixatmo](https://hexdocs.pm/elixatmo).
-
