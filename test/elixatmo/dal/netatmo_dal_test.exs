@@ -214,7 +214,7 @@ defmodule ElixAtmo.Dal.NetatmoDalTest do
     endpoint = "/api/getstationsdata"
     access_token = "access_token"
 
-    expected_weather_data = %{
+    expected_stations_data = %{
       "body" => %{
         "devices" => [
           %{
@@ -318,15 +318,15 @@ defmodule ElixAtmo.Dal.NetatmoDalTest do
         |> Map.get("access_token")
 
       assert query_param == access_token
-      Plug.Conn.resp(conn, 200, Poison.encode!(expected_weather_data))
+      Plug.Conn.resp(conn, 200, Poison.encode!(expected_stations_data))
     end)
 
     with_mock Endpoints,
-      get_weather_data: fn ^access_token, nil ->
+      get_stations_data: fn ^access_token, nil ->
         "#{mocked_host}#{endpoint}?access_token=#{access_token}"
       end do
-      {:ok, weather_data} = NetatmoDal.get_weather_data(access_token, nil)
-      assert weather_data == expected_weather_data
+      {:ok, weather_data} = NetatmoDal.get_stations_data(access_token, nil)
+      assert weather_data == expected_stations_data
     end
   end
 
@@ -349,22 +349,22 @@ defmodule ElixAtmo.Dal.NetatmoDalTest do
     end)
 
     with_mock Endpoints,
-      get_weather_data: fn ^access_token, nil ->
+      get_stations_data: fn ^access_token, nil ->
         "#{mocked_host}#{endpoint}?access_token=#{access_token}"
       end do
-      assert :error == NetatmoDal.get_weather_data(access_token, nil)
+      assert :error == NetatmoDal.get_stations_data(access_token, nil)
     end
   end
 
   test "get_weather_data return :error if netatmo call fail" do
     access_token = "access_token"
-    endpoint = Endpoints.get_weather_data(access_token, nil)
+    endpoint = Endpoints.get_stations_data(access_token, nil)
 
     with_mock HTTPoison,
       get: fn ^endpoint ->
         {:error, %HTTPoison.Error{reason: "error"}}
       end do
-      assert :error == NetatmoDal.get_weather_data(access_token, nil)
+      assert :error == NetatmoDal.get_stations_data(access_token, nil)
     end
   end
 end

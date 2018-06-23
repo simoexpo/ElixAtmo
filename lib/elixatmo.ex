@@ -12,7 +12,10 @@ defmodule ElixAtmo do
 
   ## Examples
 
-      iex> ElixAtmo.getAccessToken()
+      iex> user_data = %UserData{email: "user@email.com", password: "password"}
+      iex> app_data = %AppData{app_id: "app_id", client_secret: "secret"}
+      iex> scopes = [ElixAtmo.Model.TokenScope.read_station()]
+      iex> ElixAtmo.get_access_token(user_data, app_data, scopes)
       {:ok, %ElixAtmo.Model.Token{
         access_token: "XXX",
         expires_in: 10800,
@@ -30,13 +33,15 @@ defmodule ElixAtmo do
 
   ## Examples
 
-  #    iex> ElixAtmo.refreshAccessToken(access_token)
-  #    {:ok, %ElixAtmo.Model.Token{
-  #      access_token: "XXX",
-  #      expires_in: 10800,
-  #      refresh_token: "YYY",
-  #      scope: ["read_station"]
-  #    }}
+      iex> app_data = %AppData{app_id: "app_id", client_secret: "secret"}
+      iex> refresh_token = "refresh_token"
+      iex> ElixAtmo.refresh_access_token(access_token, app_data)
+      {:ok, %ElixAtmo.Model.Token{
+        access_token: "XXX",
+        expires_in: 10800,
+        refresh_token: "YYY",
+        scope: ["read_station"]
+      }}
 
   """
   def refresh_access_token(refresh_token, app_data = %AppData{}) do
@@ -48,11 +53,13 @@ defmodule ElixAtmo do
 
   ## Examples
 
-  #    iex> ElixAtmo.getWeatherData(access_token)
-  #    data
+      iex> ElixAtmo.get_stations_data(access_token)
+      {:ok, %{
+        #json data
+      }}
 
   """
-  def get_weather_data(access_token, device_id \\ nil) do
-    NetatmoDal.get_weather_data(access_token, device_id)
+  def get_stations_data(access_token, device_id \\ nil) do
+    NetatmoDal.get_stations_data(access_token, device_id)
   end
 end

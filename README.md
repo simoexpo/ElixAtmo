@@ -4,14 +4,42 @@
 
 ElixAtmo is client for the NetAtmo API written in elixir.
 
-**TODO: Add description**
+## Supported API
+
+* `get_access_token`: to retrieve an access token for a certain user
+* `refresh_token`: to refresh an expired access token
+* `get_stations_data`: to retrieve the data from a user weather stations
+* more to come...
+
+## Examples
+
+##### get_access_token:
+```elixir
+user_data = %UserData{email: "user@email.com", password: "password"}
+app_data = %AppData{app_id: "app_id", client_secret: "secret"}
+scopes = [ElixAtmo.Model.TokenScope.read_station()]
+{:ok, token} = ElixAtmo.get_access_token(user_data, app_data, scopes)
+```
+
+##### refresh_access_token:
+```elixir
+# token = %ElixAtmo.Model.Token{}
+app_data = %AppData{app_id: "app_id", client_secret: "secret"}
+{:ok, stations_data} = ElixAtmo.refresh_access_token(token.refresh_token, app_data)
+```
+
+##### get_stations_data:
+```elixir
+# token = %ElixAtmo.Model.Token{}
+{:ok, stations_data} = ElixAtmo.get_stations_data(token.access_token)
+```
 
 ## Installation
 
 ```elixir
 def deps do
   [
-    {:elixatmo, git: "git://github.com/simoexpo/ElixAtmo.git"}
+    {:elixatmo, git: "git://github.com/simoexpo/ElixAtmo.git", tag:"v0.1.0"}
   ]
 end
 ```

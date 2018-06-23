@@ -67,8 +67,8 @@ defmodule ElixAtmo.Dal.NetatmoDal do
     end
   end
 
-  def get_weather_data(access_token, device_id) do
-    url = Endpoints.get_weather_data(access_token, device_id)
+  def get_stations_data(access_token, device_id) do
+    url = Endpoints.get_stations_data(access_token, device_id)
 
     case HTTPoison.get(url) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->

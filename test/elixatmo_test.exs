@@ -6,8 +6,6 @@ defmodule ElixAtmoTest do
   alias ElixAtmo.Model.AppData
   alias ElixAtmo.Model.Token
 
-  # doctest ElixAtmo
-
   test "get_access_token should retrieve an access token" do
     user_data = %UserData{email: "simoexpo@email.com", password: "password"}
     app_data = %AppData{app_id: "id", client_secret: "secret"}
@@ -81,7 +79,7 @@ defmodule ElixAtmoTest do
   test "get_weather_data should call netatmo and retrieve data from weather station" do
     access_token = "access_token"
 
-    expected_weather_data = %{
+    expected_stations_data = %{
       "body" => %{
         "devices" => [
           %{
@@ -178,12 +176,12 @@ defmodule ElixAtmoTest do
     }
 
     with_mock ElixAtmo.Dal.NetatmoDal,
-      get_weather_data: fn ^access_token, nil ->
-        {:ok, expected_weather_data}
+      get_stations_data: fn ^access_token, nil ->
+        {:ok, expected_stations_data}
       end do
-      {:ok, weather_data} = ElixAtmo.get_weather_data(access_token)
-      assert weather_data == expected_weather_data
-      assert called(ElixAtmo.Dal.NetatmoDal.get_weather_data(access_token, nil))
+      {:ok, stations_data} = ElixAtmo.get_stations_data(access_token)
+      assert stations_data == expected_stations_data
+      assert called(ElixAtmo.Dal.NetatmoDal.get_stations_data(access_token, nil))
     end
   end
 
@@ -191,11 +189,11 @@ defmodule ElixAtmoTest do
     access_token = "access_token"
 
     with_mock ElixAtmo.Dal.NetatmoDal,
-      get_weather_data: fn ^access_token, nil ->
+      get_stations_data: fn ^access_token, nil ->
         :error
       end do
-      assert :error = ElixAtmo.get_weather_data(access_token)
-      assert called(ElixAtmo.Dal.NetatmoDal.get_weather_data(access_token, nil))
+      assert :error = ElixAtmo.get_stations_data(access_token)
+      assert called(ElixAtmo.Dal.NetatmoDal.get_stations_data(access_token, nil))
     end
   end
 end

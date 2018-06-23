@@ -9,10 +9,10 @@ defmodule ElixAtmo.Dal.EndpointsTest do
     access_token = "access_token"
     device_id = "device_id"
 
-    assert Endpoints.get_weather_data(access_token, nil) ==
+    assert Endpoints.get_stations_data(access_token, nil) ==
              "https://api.netatmo.com/api/getstationsdata?access_token=#{access_token}"
 
-    assert Endpoints.get_weather_data(access_token, device_id) ==
+    assert Endpoints.get_stations_data(access_token, device_id) ==
              "https://api.netatmo.com/api/getstationsdata?access_token=#{access_token}&device_id=#{
                device_id
              }"
