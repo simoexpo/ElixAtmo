@@ -110,7 +110,7 @@ defmodule ElixAtmo.Dal.NetatmoDalTest do
 
     with_mock HTTPoison,
       post: fn ^endpoint, ^expected_request ->
-        {:error, %HTTPoison.Error{reason: "error"}}
+        {:error, %HTTPoison.Error{reason: {:tls_alert, 'error'}}}
       end do
       assert :error == NetatmoDal.get_access_token(user_data, app_data, scopes)
     end
@@ -201,7 +201,7 @@ defmodule ElixAtmo.Dal.NetatmoDalTest do
 
     with_mock HTTPoison,
       post: fn ^endpoint, ^expected_request ->
-        {:error, %HTTPoison.Error{reason: "error"}}
+        {:error, %HTTPoison.Error{reason: {:tls_alert, 'error'}}}
       end do
       assert :error == NetatmoDal.refresh_access_token(refresh_token, app_data)
     end
@@ -362,7 +362,7 @@ defmodule ElixAtmo.Dal.NetatmoDalTest do
 
     with_mock HTTPoison,
       get: fn ^endpoint ->
-        {:error, %HTTPoison.Error{reason: "error"}}
+        {:error, %HTTPoison.Error{reason: {:tls_alert, 'error'}}}
       end do
       assert :error == NetatmoDal.get_stations_data(access_token, nil)
     end

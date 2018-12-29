@@ -39,7 +39,7 @@ app_data = %AppData{app_id: "app_id", client_secret: "secret"}
 ```elixir
 def deps do
   [
-    {:elixatmo, git: "git://github.com/simoexpo/ElixAtmo.git", tag: "v0.1.0"}
+    {:elixatmo, git: "git://github.com/simoexpo/ElixAtmo.git", tag: "v0.2.0"}
   ]
 end
 ```

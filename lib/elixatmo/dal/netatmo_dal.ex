@@ -36,7 +36,7 @@ defmodule ElixAtmo.Dal.NetatmoDal do
         :error
 
       {:error, %HTTPoison.Error{reason: reason}} ->
-        Logger.error(reason)
+        Logger.error("Unexpected error while getting access token: #{inspect(reason)}")
         :error
     end
   end
@@ -62,7 +62,7 @@ defmodule ElixAtmo.Dal.NetatmoDal do
         :error
 
       {:error, %HTTPoison.Error{reason: reason}} ->
-        Logger.error(reason)
+        Logger.error("Unexpected error while refreshing access token: #{inspect(reason)}")
         :error
     end
   end
@@ -80,7 +80,7 @@ defmodule ElixAtmo.Dal.NetatmoDal do
         :error
 
       {:error, %HTTPoison.Error{reason: reason}} ->
-        Logger.error(reason)
+        Logger.error("Unexpected error while getting weather info: #{inspect(reason)}")
         :error
     end
   end

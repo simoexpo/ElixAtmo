@@ -4,8 +4,8 @@ defmodule ElixAtmo.MixProject do
   def project do
     [
       app: :elixatmo,
-      version: "0.1.0",
-      elixir: "~> 1.6",
+      version: "0.2.0",
+      elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       test_coverage: [tool: ExCoveralls],
@@ -28,12 +28,12 @@ defmodule ElixAtmo.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:httpoison, "~> 1.0"},
-      {:poison, "~> 3.1"},
-      {:safeexstruct, git: "git://github.com/simoexpo/SafeExStruct.git", tag: "v0.3.0"},
-      {:bypass, "~> 0.8", only: :test},
-      {:mock, "~> 0.3.0", only: :test},
-      {:excoveralls, "~> 0.8", only: :test}
+      {:httpoison, "~> 1.5.0"},
+      {:poison, "~> 4.0.1"},
+      {:safeexstruct, git: "git://github.com/simoexpo/SafeExStruct.git", tag: "v0.4.0"},
+      {:bypass, "~> 1.0.0", only: :test},
+      {:mock, "~> 0.3.2", only: :test},
+      {:excoveralls, "~> 0.10.3", only: :test}
     ]
   end
 end
