@@ -28,7 +28,7 @@ defmodule ElixAtmo.Dal.NetatmoDal do
     case HTTPoison.post(Endpoints.token(), body) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         body
-        |> Poison.decode!()
+        |> Jason.decode!()
         |> Token.create(ignore_unknown_fields: true, allow_string_keys: true)
 
       {:ok, %HTTPoison.Response{status_code: code, body: body}} ->
@@ -54,7 +54,7 @@ defmodule ElixAtmo.Dal.NetatmoDal do
     case HTTPoison.post(Endpoints.token(), body) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         body
-        |> Poison.decode!()
+        |> Jason.decode!()
         |> Token.create(ignore_unknown_fields: true, allow_string_keys: true)
 
       {:ok, %HTTPoison.Response{status_code: code, body: body}} ->
@@ -73,7 +73,7 @@ defmodule ElixAtmo.Dal.NetatmoDal do
     case HTTPoison.get(url) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         body
-        |> Poison.decode()
+        |> Jason.decode()
 
       {:ok, %HTTPoison.Response{status_code: code, body: body}} ->
         Logger.error("Error while getting weather info: status code #{code}, body #{body}")

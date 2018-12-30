@@ -1,4 +1,4 @@
-# ElixAtmo [![Build Status](https://travis-ci.org/simoexpo/ElixAtmo.svg?branch=master)](https://travis-ci.org/simoexpo/ElixAtmo) [![Coverage Status](https://coveralls.io/repos/github/simoexpo/ElixAtmo/badge.svg?branch=master)](https://coveralls.io/github/simoexpo/ElixAtmo?branch=master) [![codebeat badge](https://codebeat.co/badges/ea970de3-b5ed-4b07-9d62-f4fb31dcb475)](https://codebeat.co/projects/github-com-simoexpo-elixatmo-master)
+# ElixAtmo [![version](https://img.shields.io/badge/version-0.3.0-blue.svg)](https://github.com/simoexpo/ElixAtmo/tree/v0.3.0) [![Build Status](https://travis-ci.org/simoexpo/ElixAtmo.svg?branch=master)](https://travis-ci.org/simoexpo/ElixAtmo) [![Coverage Status](https://coveralls.io/repos/github/simoexpo/ElixAtmo/badge.svg?branch=master)](https://coveralls.io/github/simoexpo/ElixAtmo?branch=master) [![codebeat badge](https://codebeat.co/badges/ea970de3-b5ed-4b07-9d62-f4fb31dcb475)](https://codebeat.co/projects/github-com-simoexpo-elixatmo-master)
 
 ## What is it?
 

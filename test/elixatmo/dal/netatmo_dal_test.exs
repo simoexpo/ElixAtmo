@@ -36,7 +36,7 @@ defmodule ElixAtmo.Dal.NetatmoDalTest do
     }
 
     expected_response =
-      Poison.encode!(%{
+      Jason.encode!(%{
         "access_token" => "access_token",
         "expires_in" => 1000,
         "refresh_token" => "refresh_token",
@@ -133,7 +133,7 @@ defmodule ElixAtmo.Dal.NetatmoDalTest do
     }
 
     expected_response =
-      Poison.encode!(%{
+      Jason.encode!(%{
         "access_token" => "access_token",
         "expires_in" => 1000,
         "refresh_token" => "refresh_token",
@@ -318,7 +318,7 @@ defmodule ElixAtmo.Dal.NetatmoDalTest do
         |> Map.get("access_token")
 
       assert query_param == access_token
-      Plug.Conn.resp(conn, 200, Poison.encode!(expected_stations_data))
+      Plug.Conn.resp(conn, 200, Jason.encode!(expected_stations_data))
     end)
 
     with_mock Endpoints,
