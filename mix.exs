@@ -28,12 +28,12 @@ defmodule ElixAtmo.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:httpoison, "~> 1.5.0"},
-      {:jason, "~> 1.1"},
+      {:httpoison, "~> 1.7.0"},
+      {:jason, "~> 1.2.2"},
       {:safeexstruct, git: "git://github.com/simoexpo/SafeExStruct.git", tag: "v0.4.0"},
-      {:bypass, "~> 1.0.0", only: :test},
-      {:mock, "~> 0.3.2", only: :test},
-      {:excoveralls, "~> 0.10.3", only: :test}
+      {:bypass, "~> 2.1.0", only: :test},
+      {:mock, "~> 0.3.6", only: :test},
+      {:excoveralls, "~> 0.13.3", only: :test}
     ]
   end
 end
